@@ -1,7 +1,7 @@
 import asyncio
 import os
 import json
-from datetime import datetime, timedelta
+from datetime import datetime
 import websockets
 from supabase import create_client
 import logging
