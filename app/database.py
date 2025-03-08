@@ -1,10 +1,17 @@
 import os
-from supabase import create_client, Client
+from supabase import create_client
+from dotenv import load_dotenv
 
-SUPABASE_URL = os.environ.get("SUPABASE_URL")
-SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+# Загрузка переменных из .env файла (для локальной разработки)
+load_dotenv()
 
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+# Получение переменных окружения
+SUPABASE_URL = os.getenv("NEXT_PUBLIC_SUPABASE_URL")
+SUPABASE_KEY = os.getenv("NEXT_PUBLIC_SUPABASE_ANON_KEY")
 
-def get_supabase():
+# Инициализация клиента Supabase
+supabase = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+def get_connection():
+    """Возвращает клиент Supabase"""
     return supabase
